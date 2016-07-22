@@ -1,0 +1,22 @@
+{
+  "name": "w3c-keycode",
+  "version": "1.0.0",
+  "description": "Map KeyEvent.keyCode to KeyEvent.code-style strings",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marijnh/w3c-keycode.git"
+  },
+  "keywords": [
+    "browser",
+    "key",
+    "event",
+    "key code"
+  ],
+  "author": "Marijn Haverbeke <marijnh@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marijnh/w3c-keycode/issues"
+  },
+  "homepage": "https://github.com/marijnh/w3c-keycode#readme"
+}
