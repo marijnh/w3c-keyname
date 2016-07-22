@@ -5,7 +5,7 @@ codes to
 [`KeyEvent.code`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
 strings. The full list of such codes (of which this library only
 supports a subset) is defined in
-[this document](https://www.w3.org/TR/uievents-key/).
+[this document](https://w3c.github.io/uievents-code/).
 
 License: MIT
 
