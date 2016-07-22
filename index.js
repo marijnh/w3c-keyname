@@ -7,9 +7,7 @@ var keyCodes = module.exports = {
   16: "Shift",
   17: "Control",
   18: "Alt",
-  19: "Pause",
   20: "CapsLock",
-  25: "Lang2",
   27: "Escape",
   32: "Space",
   33: "PageUp",
@@ -27,16 +25,6 @@ var keyCodes = module.exports = {
   61: "Equal",
   91: "MetaLeft",
   92: "MetaRight",
-  96: "Numpad0",
-  97: "Numpad1",
-  98: "Numpad2",
-  99: "Numpad3",
-  100: "Numpad4",
-  101: "Numpad5",
-  102: "Numpad6",
-  103: "Numpad7",
-  104: "Numpad8",
-  105: "Numpad9",
   106: "NumpadMultiply",
   107: "NumpadAdd",
   108: "NumpadComma",
@@ -66,6 +54,11 @@ var keyCodes = module.exports = {
   229: "KeyQ"
 }
 
-for (var i = 48; i <= 57; i++) keyCodes[i] = "Digit" + String.fromCharCode(i)
-for (var i = 1; i <= 24; i++) keyCodes[i + 111] = "F" + i
-for (var i = 65; i <= 90; i++) keyCodes[i] = "Key" + String.fromCharCode(i)
+for (var i = 0; i < 10; i++) {
+  keyCodes[48 + i] = "Digit" + i
+  keyCodes[96 + i] = "Numpad" + i
+}
+for (var i = 1; i <= 24; i++)
+  keyCodes[i + 111] = "F" + i
+for (var i = 65; i <= 90; i++)
+  keyCodes[i] = "Key" + String.fromCharCode(i)
