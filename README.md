@@ -1,14 +1,13 @@
-# W3C keycode
+# W3C keyname
 
-Tiny library that exports an object that maps numeric browser key
-codes to
-[`KeyEvent.code`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
-strings. The full list of such codes (of which this library only
-supports a subset) is defined in
-[this document](https://w3c.github.io/uievents-code/).
+Tiny library that exports a function that takes a keyboard event and
+returns a
+[`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)-style
+string. Will use the actual `key` property of the event if available,
+and fall back to a value synthesized from the `keyCode` otherwise.
+
+Probably often wrong on non-US keyboards, since the correspondence
+between a key code and the character it produces when shift is held
+is predicted based on a hard-coded table.
 
 License: MIT
-
-Does not try to target ancient browsers, and leaves out obscure keys.
-Intended to use as a reasonable fallback for browsers that don't have
-native support for `KeyEvent.code`.

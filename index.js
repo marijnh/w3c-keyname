@@ -1,4 +1,4 @@
-var keyCodes = module.exports = {
+var base = {
   8: "Backspace",
   9: "Tab",
   10: "Enter",
@@ -9,7 +9,7 @@ var keyCodes = module.exports = {
   18: "Alt",
   20: "CapsLock",
   27: "Escape",
-  32: "Space",
+  32: " ",
   33: "PageUp",
   34: "PageDown",
   35: "End",
@@ -21,44 +21,81 @@ var keyCodes = module.exports = {
   44: "PrintScreen",
   45: "Insert",
   46: "Delete",
-  59: "Semicolon",
-  61: "Equal",
-  91: "MetaLeft",
-  92: "MetaRight",
-  106: "NumpadMultiply",
-  107: "NumpadAdd",
-  108: "NumpadComma",
-  109: "NumpadSubtract",
-  110: "NumpadDecimal",
-  111: "NumpadDivide",
+  59: ";",
+  61: "=",
+  91: "Meta",
+  92: "Meta",
+  106: "*",
+  107: "+",
+  108: ",",
+  109: "-",
+  110: ".",
+  111: "/",
   144: "NumLock",
   145: "ScrollLock",
-  160: "ShiftLeft",
-  161: "ShiftRight",
-  162: "ControlLeft",
-  163: "ControlRight",
-  164: "AltLeft",
-  165: "AltRight",
-  173: "Minus",
-  186: "Semicolon",
-  187: "Equal",
-  188: "Comma",
-  189: "Minus",
-  190: "Period",
-  191: "Slash",
-  192: "Backquote",
-  219: "BracketLeft",
-  220: "Backslash",
-  221: "BracketRight",
-  222: "Quote",
-  229: "KeyQ"
+  160: "Shift",
+  161: "Shift",
+  162: "Control",
+  163: "Control",
+  164: "Alt",
+  165: "Alt",
+  173: "-",
+  186: ";",
+  187: "=",
+  188: ",",
+  189: "-",
+  190: ".",
+  191: "/",
+  192: "`",
+  219: "[",
+  220: "\\",
+  221: "]",
+  222: "'",
+  229: "q"
+}
+var shift = {
+  48: ")",
+  49: "!",
+  50: "@",
+  51: "#",
+  52: "$",
+  53: "%",
+  54: "^",
+  55: "&",
+  56: "*",
+  57: "(",
+  59: ";",
+  61: "+",
+  173: "_",
+  186: ":",
+  187: "+",
+  188: "<",
+  189: "_",
+  190: ">",
+  191: "?",
+  192: "~",
+  219: "{",
+  220: "|",
+  221: "}",
+  222: "\"",
+  229: "Q"
 }
 
-for (var i = 0; i < 10; i++) {
-  keyCodes[48 + i] = "Digit" + i
-  keyCodes[96 + i] = "Numpad" + i
+// Fill in the digit keys
+for (var i = 0; i < 10; i++) base[48 + i] = base[96 + i] = String(i)
+
+// The function keys
+for (var i = 1; i <= 24; i++) base[i + 111] = "F" + i
+
+// And the alphabetic keys
+for (var i = 65; i <= 90; i++) {
+  base[i] = String.fromCharCode(i + 32)
+  shift[i] = String.fromCharCode(i)
 }
-for (var i = 1; i <= 24; i++)
-  keyCodes[i + 111] = "F" + i
-for (var i = 65; i <= 90; i++)
-  keyCodes[i] = "Key" + String.fromCharCode(i)
+
+// For each code that doesn't have a shift-equivalent, copy the base name
+for (var code in base) if (!shift.hasOwnProperty(code)) shift[code] = base[code]
+
+module.exports = function keyName(event) {
+  return event.key || (event.shiftKey ? shift : base)[event.keyCode] || "Unidentified"
+}
