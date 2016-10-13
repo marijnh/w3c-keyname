@@ -96,6 +96,10 @@ for (var i = 65; i <= 90; i++) {
 // For each code that doesn't have a shift-equivalent, copy the base name
 for (var code in base) if (!shift.hasOwnProperty(code)) shift[code] = base[code]
 
-module.exports = function keyName(event) {
+function keyName(event) {
   return event.key || (event.shiftKey ? shift : base)[event.keyCode] || "Unidentified"
 }
+
+module.exports = keyName
+keyName.base = base
+keyName.shift = shift
