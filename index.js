@@ -81,7 +81,7 @@ var shift = {
   229: "Q"
 }
 
-const chrome = typeof navigator != "undefined" && /Chrome\//.test(navigator.userAgent)
+var chrome = typeof navigator != "undefined" && /Chrome\//.test(navigator.userAgent)
 
 // Fill in the digit keys
 for (var i = 0; i < 10; i++) base[48 + i] = base[96 + i] = String(i)
