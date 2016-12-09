@@ -101,9 +101,13 @@ for (var code in base) if (!shift.hasOwnProperty(code)) shift[code] = base[code]
 function keyName(event) {
   // Don't trust event.key in Chrome when there are modifiers until
   // they fix https://bugs.chromium.org/p/chromium/issues/detail?id=633838
-  return ((!chrome || !event.ctrlKey && !event.altKey && !event.metaKey) && event.key) ||
+  let name = ((!chrome || !event.ctrlKey && !event.altKey && !event.metaKey) && event.key) ||
     (event.shiftKey ? shift : base)[event.keyCode] ||
     event.key || "Unidentified"
+  // Edge sometimes produces wrong names (Issue #3)
+  if (name == "Esc") name = "Escape"
+  if (name == "Del") name = "Delete"
+  return name
 }
 
 module.exports = keyName
