@@ -81,7 +81,8 @@ var shift = {
   229: "Q"
 }
 
-var chrome = typeof navigator != "undefined" && /Chrome\//.test(navigator.userAgent)
+var chrome = typeof navigator != "undefined" && /Chrome\/(\d+)/.exec(navigator.userAgent)
+var brokenModifierNames = chrome && +chrome[1] < 57
 
 // Fill in the digit keys
 for (var i = 0; i < 10; i++) base[48 + i] = base[96 + i] = String(i)
@@ -101,7 +102,7 @@ for (var code in base) if (!shift.hasOwnProperty(code)) shift[code] = base[code]
 function keyName(event) {
   // Don't trust event.key in Chrome when there are modifiers until
   // they fix https://bugs.chromium.org/p/chromium/issues/detail?id=633838
-  var name = ((!chrome || !event.ctrlKey && !event.altKey && !event.metaKey) && event.key) ||
+  var name = ((!brokenModifierNames || !event.ctrlKey && !event.altKey && !event.metaKey) && event.key) ||
     (event.shiftKey ? shift : base)[event.keyCode] ||
     event.key || "Unidentified"
   // Edge sometimes produces wrong names (Issue #3)
