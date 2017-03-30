@@ -108,6 +108,11 @@ function keyName(event) {
   // Edge sometimes produces wrong names (Issue #3)
   if (name == "Esc") name = "Escape"
   if (name == "Del") name = "Delete"
+  // https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/8860571/
+  if (name == "Left") name = "ArrowLeft"
+  if (name == "Up") name = "ArrowUp"
+  if (name == "Right") name = "ArrowRight"
+  if (name == "Down") name = "ArrowDown"
   return name
 }
 
