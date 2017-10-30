@@ -83,7 +83,9 @@ var shift = {
 
 var chrome = typeof navigator != "undefined" && /Chrome\/(\d+)/.exec(navigator.userAgent)
 var safari = typeof navigator != "undefined" && /Apple Computer/.test(navigator.vendor)
-var brokenModifierNames = chrome && +chrome[1] < 57
+var gecko = typeof navigator != "undefined" && /Gecko\/\d+/.test(navigator.userAgent)
+var mac = typeof navigator != "undefined" && /Mac/.test(navigator.platform)
+var brokenModifierNames = chrome && +chrome[1] < 57 || gecko && mac
 
 // Fill in the digit keys
 for (var i = 0; i < 10; i++) base[48 + i] = base[96 + i] = String(i)
