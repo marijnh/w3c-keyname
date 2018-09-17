@@ -1,6 +1,6 @@
 {
   "name": "w3c-keyname",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Get a KeyboardEvent.key-style string from an event",
   "main": "index.js",
   "repository": {
