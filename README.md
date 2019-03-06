@@ -9,6 +9,10 @@ and fall back to a value synthesized from the `keyCode` otherwise.
 Probably often wrong on non-US keyboards, since the correspondence
 between a key code and the character it produces when shift is held is
 predicted based on a hard-coded table. Meant as a fallback for
-`KeyboardEvent.name`, not a replacement.
+`KeyboardEvent.key`, not a replacement.
+
+The lookup tables from key codes (`event.keyCode`) to names are
+exported as `base` (when Shift isn't held) and `shift` (when Shift is
+held).
 
 License: MIT
