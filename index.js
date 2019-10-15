@@ -88,6 +88,7 @@ var chrome = typeof navigator != "undefined" && /Chrome\/(\d+)/.exec(navigator.u
 var safari = typeof navigator != "undefined" && /Apple Computer/.test(navigator.vendor)
 var gecko = typeof navigator != "undefined" && /Gecko\/\d+/.test(navigator.userAgent)
 var mac = typeof navigator != "undefined" && /Mac/.test(navigator.platform)
+var ie = typeof navigator != "undefined" && /MSIE \d|Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(navigator.userAgent)
 var brokenModifierNames = chrome && (mac || +chrome[1] < 57) || gecko && mac
 
 // Fill in the digit keys
@@ -109,7 +110,7 @@ exports.keyName = function(event) {
   // Don't trust event.key in Chrome when there are modifiers until
   // they fix https://bugs.chromium.org/p/chromium/issues/detail?id=633838
   var ignoreKey = brokenModifierNames && (event.ctrlKey || event.altKey || event.metaKey) ||
-    safari && event.shiftKey && event.key && event.key.length == 1
+    (safari || ie) && event.shiftKey && event.key && event.key.length == 1
   var name = (!ignoreKey && event.key) ||
     (event.shiftKey ? shift : base)[event.keyCode] ||
     event.key || "Unidentified"
