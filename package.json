@@ -3,6 +3,7 @@
   "version": "2.1.1",
   "description": "Get a KeyboardEvent.key-style string from an event",
   "main": "index.js",
+  "module": "index.mjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marijnh/w3c-keyname.git"
@@ -18,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/marijnh/w3c-keyname/issues"
   },
-  "homepage": "https://github.com/marijnh/w3c-keyname#readme"
+  "homepage": "https://github.com/marijnh/w3c-keyname#readme",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "rollup": "^1.26.3",
+    "rollup-plugin-commonjs": "^10.1.0"
+  }
 }
