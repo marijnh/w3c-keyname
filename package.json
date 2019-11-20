@@ -3,7 +3,7 @@
   "version": "2.2.0",
   "description": "Get a KeyboardEvent.key-style string from an event",
   "main": "index.js",
-  "module": "index.mjs",
+  "module": "index.es.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marijnh/w3c-keyname.git"
