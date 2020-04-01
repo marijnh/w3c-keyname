@@ -2,8 +2,14 @@
   "name": "w3c-keyname",
   "version": "2.2.2",
   "description": "Get a KeyboardEvent.key-style string from an event",
-  "main": "index.js",
+  "main": "index.cjs",
+  "type": "module",
+  "exports": {
+    "import": "./index.es.js",
+    "require": "./index.cjs"
+  },
   "module": "index.es.js",
+  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marijnh/w3c-keyname.git"
