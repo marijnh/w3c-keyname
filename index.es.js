@@ -1,4 +1,4 @@
-var base = {
+export var base = {
   8: "Backspace",
   9: "Tab",
   10: "Enter",
@@ -53,9 +53,8 @@ var base = {
   222: "'",
   229: "q"
 }
-exports.base = base
 
-var shift = {
+export var shift = {
   48: ")",
   49: "!",
   50: "@",
@@ -66,7 +65,7 @@ var shift = {
   55: "&",
   56: "*",
   57: "(",
-  59: ";",
+  59: ":",
   61: "+",
   173: "_",
   186: ":",
@@ -82,7 +81,6 @@ var shift = {
   222: "\"",
   229: "Q"
 }
-exports.shift = shift
 
 var chrome = typeof navigator != "undefined" && /Chrome\/(\d+)/.exec(navigator.userAgent)
 var safari = typeof navigator != "undefined" && /Apple Computer/.test(navigator.vendor)
@@ -106,7 +104,7 @@ for (var i = 65; i <= 90; i++) {
 // For each code that doesn't have a shift-equivalent, copy the base name
 for (var code in base) if (!shift.hasOwnProperty(code)) shift[code] = base[code]
 
-exports.keyName = function(event) {
+export function keyName(event) {
   // Don't trust event.key in Chrome when there are modifiers until
   // they fix https://bugs.chromium.org/p/chromium/issues/detail?id=633838
   var ignoreKey = brokenModifierNames && (event.ctrlKey || event.altKey || event.metaKey) ||
