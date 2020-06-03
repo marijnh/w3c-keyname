@@ -50,8 +50,7 @@ export var base = {
   219: "[",
   220: "\\",
   221: "]",
-  222: "'",
-  229: "q"
+  222: "'"
 }
 
 export var shift = {
@@ -78,8 +77,7 @@ export var shift = {
   219: "{",
   220: "|",
   221: "}",
-  222: "\"",
-  229: "Q"
+  222: "\""
 }
 
 var chrome = typeof navigator != "undefined" && /Chrome\/(\d+)/.exec(navigator.userAgent)
