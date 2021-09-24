@@ -103,8 +103,6 @@ for (var i = 65; i <= 90; i++) {
 for (var code in base) if (!shift.hasOwnProperty(code)) shift[code] = base[code]
 
 export function keyName(event) {
-  // Don't trust event.key in Chrome when there are modifiers until
-  // they fix https://bugs.chromium.org/p/chromium/issues/detail?id=633838
   var ignoreKey = brokenModifierNames && (event.ctrlKey || event.altKey || event.metaKey) ||
     (safari || ie) && event.shiftKey && event.key && event.key.length == 1
   var name = (!ignoreKey && event.key) ||
