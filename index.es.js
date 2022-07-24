@@ -104,7 +104,8 @@ for (var code in base) if (!shift.hasOwnProperty(code)) shift[code] = base[code]
 
 export function keyName(event) {
   var ignoreKey = brokenModifierNames && (event.ctrlKey || event.altKey || event.metaKey) ||
-    (safari || ie) && event.shiftKey && event.key && event.key.length == 1
+    (safari || ie) && event.shiftKey && event.key && event.key.length == 1 ||
+    event.key == "Unidentified"
   var name = (!ignoreKey && event.key) ||
     (event.shiftKey ? shift : base)[event.keyCode] ||
     event.key || "Unidentified"
