@@ -81,11 +81,10 @@ export var shift = {
 }
 
 var chrome = typeof navigator != "undefined" && /Chrome\/(\d+)/.exec(navigator.userAgent)
-var safari = typeof navigator != "undefined" && /Apple Computer/.test(navigator.vendor)
 var gecko = typeof navigator != "undefined" && /Gecko\/\d+/.test(navigator.userAgent)
 var mac = typeof navigator != "undefined" && /Mac/.test(navigator.platform)
 var ie = typeof navigator != "undefined" && /MSIE \d|Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(navigator.userAgent)
-var brokenModifierNames = chrome && (mac || +chrome[1] < 57) || gecko && mac
+var brokenModifierNames = mac || chrome && +chrome[1] < 57
 
 // Fill in the digit keys
 for (var i = 0; i < 10; i++) base[48 + i] = base[96 + i] = String(i)
@@ -104,7 +103,7 @@ for (var code in base) if (!shift.hasOwnProperty(code)) shift[code] = base[code]
 
 export function keyName(event) {
   var ignoreKey = brokenModifierNames && (event.ctrlKey || event.altKey || event.metaKey) ||
-    (safari || ie) && event.shiftKey && event.key && event.key.length == 1 ||
+    ie && event.shiftKey && event.key && event.key.length == 1 ||
     event.key == "Unidentified"
   var name = (!ignoreKey && event.key) ||
     (event.shiftKey ? shift : base)[event.keyCode] ||
