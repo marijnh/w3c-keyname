@@ -20,7 +20,7 @@
     "event",
     "key code"
   ],
-  "author": "Marijn Haverbeke <marijnh@gmail.com>",
+  "author": "Marijn Haverbeke <marijn@haverbeke.berlin>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/marijnh/w3c-keyname/issues"
