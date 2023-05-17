@@ -5,10 +5,10 @@
   "main": "index.cjs",
   "type": "module",
   "exports": {
-    "import": "./index.es.js",
+    "import": "./index.js",
     "require": "./index.cjs"
   },
-  "module": "index.es.js",
+  "module": "index.js",
   "types": "index.d.ts",
   "repository": {
     "type": "git",
