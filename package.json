@@ -6,7 +6,8 @@
   "type": "module",
   "exports": {
     "import": "./index.js",
-    "require": "./index.cjs"
+    "require": "./index.cjs",
+    "types": "./index.d.ts"
   },
   "module": "index.js",
   "types": "index.d.ts",
