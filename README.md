@@ -1,3 +1,5 @@
+**This repository has moved to https://code.haverbeke.berlin/marijn/w3c-keyname**
+
 # W3C keyname
 
 Tiny library that exports a function `keyName` that takes a keyboard event and
